@@ -44,7 +44,7 @@ namespace Shop1.Controllers
             }
             catch (Exception e)
             {
-
+                return View(null);
                 throw;
             }
         }
@@ -61,7 +61,7 @@ namespace Shop1.Controllers
             if (cart == null)
             {
                 cart = _cartService.AddCart(userId);
-                _cartService.AddToCart(productId, userId);
+                _cartService.AddToCart(productId, cart.Id);
             }
             _cartService.AddToCart(productId, cart.Id);
             return RedirectToAction("index", "home");
@@ -94,6 +94,17 @@ namespace Shop1.Controllers
             var userId = int.Parse(userClaims.FindFirst(x => x.Type == ClaimTypes.NameIdentifier).Value);
             var check = _cartService.CheckOut(userId, deliveryAddress);
             return Ok();
+        }
+
+        [HttpGet("purchase")]
+        public IActionResult Purchases()
+        {
+            var userClaims = User.Identity as ClaimsIdentity;
+
+            var userId = int.Parse(userClaims.FindFirst(x => x.Type == ClaimTypes.NameIdentifier).Value);
+
+            var cart = _cartService.GetUserCarts(userId);
+            return View();
         }
     }
 }

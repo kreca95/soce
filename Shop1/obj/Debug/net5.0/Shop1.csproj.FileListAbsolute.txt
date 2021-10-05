@@ -90,3 +90,4 @@ C:\Users\cornet1\source\repos\Shop1\Shop1\bin\Debug\net5.0\Microsoft.Extensions.
 C:\Users\cornet1\source\repos\Shop1\Shop1\obj\Debug\net5.0\Shop1.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\cornet1\source\repos\Shop1\Shop1\obj\Debug\net5.0\Razor\Views\Product\Edit.cshtml.g.cs
 C:\Users\cornet1\source\repos\Shop1\Shop1\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
+C:\Users\cornet1\source\repos\Shop1\Shop1\obj\Debug\net5.0\Razor\Views\Cart\Purchases.cshtml.g.cs

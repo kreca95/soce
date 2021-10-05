@@ -12,6 +12,7 @@ namespace Shop1.Models
         public bool IsDone { get; set; }
         public int UserId { get; set; }
         public string DeliveryAddress { get; set; }
+        public List<CartProduct> CartProduct { get; set; }
 
         //public User User { get; set; }
     }

@@ -15,5 +15,6 @@ namespace Shop1.Services
         Cart AddCart(int userId);
         List<CartProduct> GetCartProducts(int cartId);
         bool RemoveProductFromCart(int cartId, int productId);
+        List<Cart> GetUserCarts(int userId);
     }
 }

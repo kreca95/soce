@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Shop1.Data;
 
 namespace Shop1.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20211005074859_test")]
+    partial class test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -41,15 +43,18 @@ namespace Shop1.Migrations
 
             modelBuilder.Entity("Shop1.Models.CartProduct", b =>
                 {
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
                     b.Property<int>("CartId")
                         .HasColumnType("int");
 
-                    b.HasKey("ProductId", "CartId");
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("CartId");
+                    b.HasKey("CartId", "ProductId");
+
+                    b.HasIndex("CartId")
+                        .IsUnique();
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("CartProducts");
                 });
@@ -102,8 +107,8 @@ namespace Shop1.Migrations
             modelBuilder.Entity("Shop1.Models.CartProduct", b =>
                 {
                     b.HasOne("Shop1.Models.Cart", "Cart")
-                        .WithMany("CartProduct")
-                        .HasForeignKey("CartId")
+                        .WithOne("CartProduct")
+                        .HasForeignKey("Shop1.Models.CartProduct", "CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
