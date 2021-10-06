@@ -5,6 +5,11 @@
 @{
 
 }
+@if (User.IsInRole("admin"))
+{
+    <a href="/cart/allPurchases">All Purchases</a>
+
+}
 <table class="table">
     <thead>
         <tr>
@@ -20,7 +25,7 @@
 
                 <td>@item.Id</td>
                 <td>@item.DeliveryAddress</td>
-                <td></td>
+                <td>@item.CartProduct.Sum(x => x.Product.Price)</td>
             </tr>
         }
 

@@ -63,6 +63,14 @@ namespace Shop1.Services
             return _context.CartProducts.Where(x => x.CartId == cartId).Include(x => x.Product).AsNoTracking().ToList();
         }
 
+        public List<Cart> GetCarts()
+        {
+            return _context.Carts.Include(x => x.CartProduct)
+                    .ThenInclude(x => x.Product)
+                .AsNoTracking()
+                .ToList();
+        }
+
         public List<Cart> GetUserCarts(int userId)
         {
             return _context.Carts.Where(x => x.UserId == userId && x.IsDone == true)

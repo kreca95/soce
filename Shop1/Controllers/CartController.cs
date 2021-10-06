@@ -104,7 +104,14 @@ namespace Shop1.Controllers
             var userId = int.Parse(userClaims.FindFirst(x => x.Type == ClaimTypes.NameIdentifier).Value);
 
             var cart = _cartService.GetUserCarts(userId);
-            return View();
+            return View(cart);
+        }
+        [Authorize(Roles ="admin")]
+        [HttpGet("allPurchases")]
+        public IActionResult AllPurchases()
+        {
+            var carts = _cartService.GetCarts();
+            return View("Purchases",carts);
         }
     }
 }
