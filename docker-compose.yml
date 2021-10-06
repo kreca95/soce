@@ -11,5 +11,9 @@ services:
     build: .
     ports:
       - "8000:80"
+
     depends_on:
       - db
+    environment:
+      - ConnectionStrings:DefaultConnection=Server=db,1433;Database=webShop1;User Id=sa;Password=Your_password123
+      - ASPNETCORE_ENVIRONMENT:Development

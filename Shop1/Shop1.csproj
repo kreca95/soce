@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>158a3de9-c986-48de-b456-7cb7a649dc11</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-	  <OutputType>Exe</OutputType>
+    <OutputType>Exe</OutputType>
 
   </PropertyGroup>
 
